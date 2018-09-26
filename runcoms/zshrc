@@ -11,3 +11,32 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+
+# set default editor
+export EDITOR='vi'
+export VISUAL='vi'
+
+# set up gitignore
+function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
+
+#### pipenv
+# keep it in local project folders
+export PIPENV_VENV_IN_PROJECT=1
+
+# add completions
+eval "$(pipenv --completion)"
+
+# add nvm
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
+
+#### custom
+
+# sends a specified JRPC command from a text file ($3) at a line number ($4) to port ($2) over host ($1)
+# function topspin() {
+# 	# echo "using $3"
+# 	command="$(head -n $4 $3 | tail -n 1)"
+# 	# echo "sending ${command}"
+# 	result="$(echo $command | nc $1 $2)";
+# 	echo "${result}" | json_pp 
+# }
